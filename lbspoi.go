@@ -68,15 +68,15 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 	function, args := APIstub.GetFunctionAndParameters()
 	// Route to the appropriate handler function to interact with the ledger appropriately
 	if function == "queryPoi" {
-		return s.queryCar(APIstub, args)
+		return s.queryPoi(APIstub, args)
 	} else if function == "initLedger" {
 		return s.initLedger(APIstub)
 	} else if function == "createPoi" {
-		return s.createCar(APIstub, args)
+		return s.createPoi(APIstub, args)
 	} else if function == "queryAllPois" {
-		return s.queryAllCars(APIstub)
+		return s.queryAllPois(APIstub)
 	} else if function == "changePoiLType" {
-		return s.changeCarOwner(APIstub, args)
+		return s.changePoiLType(APIstub, args)
 	}
 
 	return shim.Error("Invalid Smart Contract function name.")
